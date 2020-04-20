@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Selected Options</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="font-awesome.css"/>
+</head>
+
+<body>
+ <div id="main_wrap">
+   <ul class="options">
+     <li data-val="Opt 1"><span>Opt 1</span><span class="tick"><i class="fa fa-check"></i></span></li>
+     <li data-val="Opt 2" class="notavailable"><span>Opt 2</span><span class="tick"><i class="fa fa-check"></i></span></li>
+     <li data-val="Opt 3"><span>Opt 3</span><span class="tick"><i class="fa fa-check"></i></span></li>
+     <li data-val="Opt 4"><span>Opt 4</span><span class="tick"><i class="fa fa-check"></i></span></li>
+     <li data-val="Opt 5"><span>Opt 5</span><span class="tick"><i class="fa fa-check"></i></span></li>
+     <li data-val="Opt 6"><span>Opt 6</span><span class="tick"><i class="fa fa-check"></i></span></li>
+     <li data-val="Opt 7"><span>Opt 7</span><span class="tick"><i class="fa fa-check"></i></span></li>
+   </ul>
+   <input type="hidden" name="hidDataval" id="hidDataval"/>
+   <div style="margin:5px;">Selected Option is : <span class="opt"></span></div>
+   
+   
+   
+    
+ <ul class="options_identify">
+   <li><span class="icon nottouse"></span><span class="text">Already Taken</span></li>
+   <li><span class="icon"><span class="tick"><i class="fa fa-check"></i></span></span><span class="text">Available</span></li>
+   <li><span class="icon youchoose"><span class="tick"><i class="fa fa-check"></i></span></span><span class="text">You choose</span></li>
+ </ul>
+   
+ </div>
+ 
+ <script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+ <script type="text/javascript">
+    $(function(){
+		 $('ul.options li').not('.notavailable').on('mouseover',function(){
+			 $(this).addClass('onhover');
+		 });//On mouseover event
+		 $('ul.options li').not('.notavailable').on('mouseout',function(){
+			 $(this).removeClass('onhover');
+		 });// On mouseout event
+		 
+		 
+		 $('ul.options li').not('.notavailable').on('click',function(){
+			 $('ul.options li').removeClass('selected'); //remove selected class
+             
+			 $(this).addClass('selected');//add selected class to current elm.
+			 $('#hidDataval').val($(this).attr('data-val'));
+			 $('.opt').text($(this).attr('data-val'));
+		 });
+		 
+	});
+ </script>
+
+ 
+</body>
+</html>
